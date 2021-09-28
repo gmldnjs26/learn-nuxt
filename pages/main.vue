@@ -3,8 +3,8 @@
     <h1>메인 페이지</h1>
     <div>
       <ul>
-        <li v-for="product in products" :key="product.id">
-          <img :src="product.imageUrl" :alt="product.name" />
+        <li v-for="product in products" :key="product.id" class="item flex" @click="moveToDetailPage(product.id)">
+          <img class="product-image" :src="product.imageUrl" :alt="product.name" />
           <p>{{ product.name }}</p>
         </li>
       </ul>
@@ -22,6 +22,11 @@ export default {
       return { ...item, imageUrl: `${item.imageUrl}?random=${Math.random()}` }
     })
     return { products }
+  },
+  methods: {
+    moveToDetailPage(id) {
+      console.log(id)
+    },
   },
 }
 </script>
