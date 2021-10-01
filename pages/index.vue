@@ -9,6 +9,9 @@
           <span>{{ item.price }}</span>
         </li>
       </ul>
+      <div class="cart-wrapper">
+        <button class="btn" @click="moveToCartPage">장바구니</button>
+      </div>
     </main>
   </div>
 </template>
@@ -34,8 +37,10 @@ export default {
   },
   methods: {
     moveToDetailPage(id) {
-      console.log(id)
       this.$router.push(`/detail/${id}`)
+    },
+    moveToCartPage() {
+      this.$router.push('/cart')
     },
     async searchProduct() {
       const response = await fetchProductsByKeyword(this.searchKeyword)
