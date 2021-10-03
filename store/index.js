@@ -21,4 +21,8 @@ export const actions = {
     const response = await fetchCartItems()
     commit('setCartItems', response.data)
   },
+  // @param2 nuxtContext
+  async nuxtServerInit(storeContext) {
+    await storeContext.dispatch(FETCH_CART_ITEMS)
+  },
 }
