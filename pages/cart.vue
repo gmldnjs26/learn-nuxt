@@ -1,21 +1,17 @@
 <template>
   <div>
     <h1>Cart Page</h1>
-    <ul>
-      <li v-for="item in $store.state.cartItems" :key="item.id">
-        {{ item }}
-        <p>{{ item.name }}</p>
-        <image :src="item.imageUrl" />
-      </li>
-    </ul>
+    <CartList />
     <button>구매하기</button>
   </div>
 </template>
 
 <script>
 import { FETCH_CART_ITEMS } from '@/store'
+import CartList from '~/components/CartList.vue'
 
 export default {
+  components: { CartList },
   async asyncData({ store }) {
     await store.dispatch(FETCH_CART_ITEMS)
   },
