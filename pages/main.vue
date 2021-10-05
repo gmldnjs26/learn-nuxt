@@ -14,10 +14,11 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { fetchProductById } from '@/api'
+
 export default {
   async asyncData() {
-    const response = await axios.get('http://localhost:3000/products')
+    const response = await fetchProductById()
     const products = response.data.map((item) => {
       return { ...item, imageUrl: `${item.imageUrl}?random=${Math.random()}` }
     })
