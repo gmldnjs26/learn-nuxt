@@ -39,4 +39,11 @@ export default {
   server: {
     port: process.env.NODE_ENV === 'production' ? null : 5000,
   },
+
+  env: {
+    baseUrl:
+      process.env.NODE_ENV === 'production'
+        ? 'https://my-json-server.typicode.com/gmldnjs26/json-server-api'
+        : 'http://localhost:3000',
+  },
 }
