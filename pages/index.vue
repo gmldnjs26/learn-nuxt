@@ -17,14 +17,13 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { fetchProductsByKeyword } from '@/api'
+import { fetchProductsByKeyword, fetchProductById } from '@/api'
 import SearchInput from '@/components/SearchInput.vue'
 // import { debounce } from 'lodash'
 export default {
   components: { SearchInput },
   async asyncData() {
-    const response = await axios.get('http://localhost:3000/products')
+    const response = await fetchProductById()
     const products = response.data.map((item) => {
       return { ...item, imageUrl: `${item.imageUrl}?random=${Math.random()}` }
     })

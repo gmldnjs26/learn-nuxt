@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: process.env.baseUrl,
 })
 
 // const products = axios.create({ // 이런식으로도 할 수 있다.
@@ -9,7 +9,11 @@ const instance = axios.create({
 // })
 
 function fetchProductById(id) {
-  return instance.get(`/products/${id}`)
+  if (id) {
+    return instance.get(`/products/${id}`)
+  } else {
+    return instance.get('/products')
+  }
 }
 
 function fetchProductsByKeyword(keyword) {
